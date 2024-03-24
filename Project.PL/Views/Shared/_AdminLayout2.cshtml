@@ -1,0 +1,112 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Project.PL.styles.css" asp-append-version="true" />
+    <title>Document</title>
+</head>
+<body>
+<div class="site-wrap">
+
+    <nav class="site-nav">
+
+        <div class="name">
+            Pepper
+
+    
+        </div>
+
+        <ul>
+            <li class="active">
+                <a href="#">Owner</a>
+                <ul>
+                    <li><a href="#0">Profile</a></li>
+                    <li><a href="#0">Contact</a></li>
+                   
+                </ul>
+            </li>
+            <br />
+            
+                <li class="active">
+                    <a href="#">Renters</a>
+                    <ul>
+                        <li><a href="#0">View All</a></li>
+                        <li><a href="#0">Add</a></li>
+                        <li><a href="#0">Pipeline</a></li>
+                    </ul>
+                </li>
+
+                <li class="active">
+                    <a href="#">Services</a>
+                    <ul>
+                        <li><a href="#0">Services</a></li>
+                        <li><a href="#0">Requested</a></li>
+                        <li><a href="#0">Add service</a></li>
+                    </ul>
+                </li>
+
+            
+            <li><a href="#0">Apartment</a></li>
+        </ul>
+
+   
+
+    </nav>
+
+        @RenderBody()
+
+        @* <main>
+
+            <header>
+                <div class="breadcrumbs">
+                    <a href="#0/">Good Morning</a>
+                </div>
+
+                <h1 class="title">Hello Mr.Mark</h1>
+
+
+                <nav class="nav-tabs" id="nav-tabs">
+                    <a href="#0" class="active">
+                        Building details
+                    </a>
+
+                    <a href="#0" >
+                        Rented
+                        <span>14</span>
+                    </a>
+
+                    <a href="#0">
+                        Available
+                        <span>24</span>
+                    </a>
+
+                </nav>
+            </header>
+            <div class="content-columns">
+              
+               
+
+            </div>
+
+        </main> *@
+        
+
+</div>
+<script>
+
+    const navTabs = document.querySelectorAll("#nav-tabs > a");
+navTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    navTabs.forEach((tab) => {
+      tab.classList.remove("active");
+    });
+    tab.classList.add("active");
+  });
+});
+</script>
+</body>
+</html>
