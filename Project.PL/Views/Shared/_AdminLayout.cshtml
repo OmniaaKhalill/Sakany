@@ -20,29 +20,64 @@
                     </a>
                 </li>
                 <!-- Add your sidebar navigation items here -->
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
              
-            </ul>
+                
+
+                <li>
+                      <a asp-route-id="1" asp-action="Details" asp-controller="Owner">Owner</a>
+                      <!--insde this page edit and delete owner -->
+                </li>
+
+                <li>
+
+                    <a asp-action="create" asp-controller="Owner"> Create Owner</a>
+
+                </li>
+                
+                <li>
+
+                    <a asp-route-id ="1" asp-action="Details" asp-controller="Building"> Building</a>
+                
+                </li>
+
+                <li>
+
+                    <a asp-action="create" asp-controller="Building"> Create Building</a>
+
+                </li>
+
+                <li>
+                    <a asp-action="index" asp-controller="Building"> Apartments</a>
+
+                    <!--insde this page table for Apartments + edit and delete Renters -->
+                </li>
+
+
+                <li>
+                    <a  asp-action="index" asp-controller="Renter">Renters</a>
+                    <!--insde this page table for renter + edit and delete Renters -->
+                </li>
+
+                <li>
+                    <a asp-action="create" asp-controller="Renter"> Add Renter</a>
+
+                </li>
+
+                <li>
+                    <a asp-action="index" asp-controller="services">Services</a>
+                    <!--insde this page table for services + edit and delete Renters -->
+                </li>
+
+                <li>
+                    <a asp-action="create" asp-controller="service"> Add services</a>
+
+                </li>
+
+              
+
+         
+             
+            </>
         </div>
         <!-- /#sidebar-wrapper -->
         <!-- Page Content -->
@@ -68,14 +103,21 @@
     <!-- Custom JavaScript -->
     <script>
         $("#menu-toggle").click(function (e) {
-            
+            var h = $("#hhh");
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
-            if( $(this).text()== "Hide" )
+            if ($(this).text() == "Hide") 
+            { 
                 $(this).text("Show")
-                else
+                h.addClass("header-c");
+            }
+            else {
                 $(this).text("Hide")
+                h.removeClass("header-c")
+            }
 
+            
+            
         });
     </script>
 

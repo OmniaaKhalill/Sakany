@@ -1,3 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Project.BLL.Interfaces;
+using Project.BLL.Repositories;
+using Project.DAL.Context;
+
+
 namespace Project.PL
 {
     public class Program
@@ -8,6 +14,29 @@ namespace Project.PL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+
+            #region Connection To DB
+            builder.Services.AddDbContext<ProjDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"));
+            });
+
+
+            #endregion
+
+
+
+            builder.Services.AddScoped<IApartmentRepo, ApartmentRepo>();
+            builder.Services.AddScoped<IBuildingRepo, BuildingRepo>();
+            builder.Services.AddScoped<IFloorRepo, FloorRepo>();
+            builder.Services.AddScoped<IManagerRepo, Manager>();
+            builder.Services.AddScoped<IRenterRepo, RenterRepo>();
+            builder.Services.AddScoped<IRenterServiceRepo, RenterServiceRepo>();
+            builder.Services.AddScoped<IRoomRepo, RoomRepo>();
+            builder.Services.AddScoped<IServiceRepo, ServiceRepo>();
+
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             var app = builder.Build();
 
@@ -24,7 +53,7 @@ namespace Project.PL
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Building}/{action=Details}/{id?}");
+                pattern: "{controller=home}/{action=index}/{id?}");
 
             app.Run();
         }

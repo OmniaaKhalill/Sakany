@@ -8,5 +8,13 @@ namespace Project.BLL.Interfaces
 {
     public interface IUnitOfWork
     {
+        public IApartmentRepo ApartmentRepo { get; set; }
+        public IBuildingRepo BuildingRepo { get; set; }
+        public IFloorRepo FloorRepo { get; set; }
+        public IManagerRepo OwnerRepo { get; set; }
+        public IRenterRepo RenterRepo { get; set; }
+        public IRenterServiceRepo RenterServiceRepo { get; set; }
+        public IRoomRepo RoomRepo { get; set; }   
+        public IServiceRepo ServiceRepo { get; set; }
     }
 }

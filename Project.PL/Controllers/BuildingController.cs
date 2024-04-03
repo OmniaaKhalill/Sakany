@@ -1,32 +1,44 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Project.BLL.Interfaces;
+
 
 namespace Project.PL.Controllers
 {
     public class BuildingController : Controller
     {
-        // GET: BuildingController
-        public ActionResult Index()
+
+        private readonly IUnitOfWork _unitOfWork;
+       
+        public BuildingController(IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
+        }
+        // GET: BuildingController
+        public IActionResult Index()
+        {
+            
+
             return View();
         }
 
         // GET: BuildingController/Details/5
-        public ActionResult Details()
+        public IActionResult Details()
         {
-            return View(new DAL.Entities.Building());
+           // _unitOfWork.BuildingRepo
+            return View();
         }
 
         // GET: BuildingController/Create
-        public ActionResult Create()
+        [HttpGet]
+        public IActionResult Create()
         {
-            return View();
+            return View(new DAL.Entities.Building());
         }
 
         // POST: BuildingController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -39,7 +51,7 @@ namespace Project.PL.Controllers
         }
 
         // GET: BuildingController/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
             return View();
         }
@@ -47,7 +59,7 @@ namespace Project.PL.Controllers
         // POST: BuildingController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -60,7 +72,7 @@ namespace Project.PL.Controllers
         }
 
         // GET: BuildingController/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             return View();
         }
@@ -68,7 +80,7 @@ namespace Project.PL.Controllers
         // POST: BuildingController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, IFormCollection collection)
         {
             try
             {

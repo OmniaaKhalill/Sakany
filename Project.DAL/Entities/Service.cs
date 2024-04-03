@@ -7,7 +7,7 @@ namespace Project.DAL.Entities
         public int ServiceId { get; set; }
         public string ServiceName { get; set; }
         public int Cost { get; set; }
-        public string Discription { get; set; }
+        public string Description { get; set; }
 
         //forkes
         public int BuildingId { get; set;}

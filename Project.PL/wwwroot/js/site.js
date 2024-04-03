@@ -2,3 +2,15 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+//(function ($) {
+//    navList = $(".list-unstyled");
+
+//    navList.addEventListener("click", () => {
+
+//        navList.removeClass("collapse");
+
+
+//        // tab.classList.add("active");
+//    });
+
+//})(jQuery);

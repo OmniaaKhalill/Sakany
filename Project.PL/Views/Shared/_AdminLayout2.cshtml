@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="/css/style.css">
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Project.PL.styles.css" asp-append-version="true" />
     <title>Document</title>
@@ -12,7 +16,7 @@
 <body>
 <div class="site-wrap">
 
-    <nav class="site-nav">
+    @* <nav class="site-nav">
 
         <div class="name">
             Pepper
@@ -32,8 +36,9 @@
             <br />
             
                 <li class="active">
-                    <a href="#">Renters</a>
+                     <a href="#" >Renters</a> 
                     <ul>
+                        
                         <li><a href="#0">View All</a></li>
                         <li><a href="#0">Add</a></li>
                         <li><a href="#0">Pipeline</a></li>
@@ -55,58 +60,107 @@
 
    
 
-    </nav>
+    </nav> *@
+
+        <section id="menu">
+            <div class="container">
+                <div class="menubar">
+                    <nav class="navbar navbar-default">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="index.html">
+                                <img src="assets/images/logo/logo.png" alt="logo">
+                            </a>
+                        </div><!--/.navbar-header -->
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li><a href="about.html">About</a></li>
+                                <li><a href="service.html">Service</a></li>
+                                <li><a href="project.html">Project</a></li>
+
+
+                                <li><a href="team.html">Team</a></li>
+
+                                <li class="dropdown">
+                                    <a class="btn  dropdown-toggle"
+                                       type="button"
+                                       id="dropdownMenuButton"
+                                       data-mdb-toggle="dropdown"
+                                       aria-expanded="false">
+                                        Dropdown link
+                                    </a>
+
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item " href="#">Action</a>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </div>
+
+
+                                </li>
+
+
+
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li>
+                                    <a href="#">
+                                        <span class="lnr lnr-cart"></span>
+                                    </a>
+                                </li>
+                                <li class="search">
+                                    <form action="">
+                                        <input type="text" name="search" placeholder="Search....">
+                                        <a href="#">
+                                            <span class="lnr lnr-magnifier"></span>
+                                        </a>
+                                    </form>
+                                </li>
+                            </ul><!-- / ul -->
+                        </div><!-- /.navbar-collapse -->
+                    </nav><!--/nav -->
+                </div><!--/.menubar -->
+            </div><!-- /.container -->
+
+        </section><!--/#menu-->
+        <!--menu end-->
+        <main>
 
         @RenderBody()
-
-        @* <main>
-
-            <header>
-                <div class="breadcrumbs">
-                    <a href="#0/">Good Morning</a>
-                </div>
-
-                <h1 class="title">Hello Mr.Mark</h1>
-
-
-                <nav class="nav-tabs" id="nav-tabs">
-                    <a href="#0" class="active">
-                        Building details
-                    </a>
-
-                    <a href="#0" >
-                        Rented
-                        <span>14</span>
-                    </a>
-
-                    <a href="#0">
-                        Available
-                        <span>24</span>
-                    </a>
-
-                </nav>
-            </header>
-            <div class="content-columns">
-              
-               
-
-            </div>
-
-        </main> *@
+        </main>
+      
         
 
 </div>
-<script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+    <script>
 
     const navTabs = document.querySelectorAll("#nav-tabs > a");
-navTabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
+     navTabs.forEach((tab) => {
+
+    tab.addEventListener("click", () => {
     navTabs.forEach((tab) => {
       tab.classList.remove("active");
-    });
+      });
     tab.classList.add("active");
-  });
+      });
+
+
 });
-</script>
+
+
+   </script>
+
 </body>
 </html>
