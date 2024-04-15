@@ -16,7 +16,7 @@ namespace Project.DAL.Entities
         public string? Discription { get; set;}
         public string ApartmentStatus { get; set; }= "Not Set";
         //forkes
-        public int FoolrId { get; set; }
+        public int FloorId { get; set; }
      
 
         //navigation prop

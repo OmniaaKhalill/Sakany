@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/css/animate.css">
 
     <!--hover.css-->
-    <link rel="stylesheet" href="/css/hover-min.css">
+  @*   <link rel="stylesheet" href="/css/hover-min.css"> *@
 
     <!--vedio player css-->
     <link rel="stylesheet" href="/css/magnific-popup.css">
@@ -98,29 +98,38 @@
 
                             <li class="active"><a href="#">Home</a></li>
 
+                             @if (User.Identity.IsAuthenticated == true)
+                            {
+                                <li class="dropdown">
+                                    <a class="btn  "
+                                    id="dropdownMenuButton"
+                                    data-mdb-toggle="dropdown"
+                                    aria-expanded="false">
+                                        Manager
+                                        <svg class="arw" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 13 16">
+                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                        </svg>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                                        <a class="dropdown-item" asp-controller="Manager" asp-action="index">Details</a>
+                                        <a class="dropdown-item" asp-controller="Manager" asp-action="create">Create</a>
+
+                                    </div>
+                                </li>
+                            }
+
+
                             <li class="dropdown">
-                                <a class="btn  dropdown-toggle"
-                                   id="dropdownMenuButton"
-                                   data-mdb-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Manager
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-                                    <a class="dropdown-item" asp-controller="Owner" asp-action="index">Details</a>
-                                    <a class="dropdown-item" asp-controller="Owner" asp-action="create">Create</a>
-                                   
-                                </div>
-                            </li>
-
-
-                            <li class="dropdown">
-                                <a class="btn  dropdown-toggle"
+                                <a class="btn  "
                                  
                                    id="dropdownMenuButton"
                                    data-mdb-toggle="dropdown"
                                    aria-expanded="false">
                                     Services
+                                    <svg class="arw" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 13 16">
+                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                    </svg>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-controller="service" asp-action="index">View all</a>
@@ -131,12 +140,15 @@
 
 
                             <li class="dropdown">
-                                <a class="btn  dropdown-toggle"
+                                <a class="btn  "
                                  
                                    id="dropdownMenuButton"
                                    data-mdb-toggle="dropdown"
                                    aria-expanded="false">
                                     Renters
+                                    <svg class="arw" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 13 16">
+                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                    </svg>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-controller="Renter" asp-action="index">View All</a>
@@ -146,12 +158,15 @@
 
 
                             <li class="dropdown">
-                                <a class="btn  dropdown-toggle"
+                                <a class="btn  "
                                   
                                    id="dropdownMenuButton"
                                    data-mdb-toggle="dropdown"
                                    aria-expanded="false">
                                     Apartment
+                                    <svg class="arw" xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 13 16">
+                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                    </svg>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" asp-controller="Apartment" asp-action="index">view all</a>
@@ -161,11 +176,31 @@
                             </li>
 
                             <li><a href="contact.html">Contact</a></li>
-                            <li>
+
+                          
+                           
+
+                            @if (User.Identity.IsAuthenticated == false)
+                            {
+
+                                <li><a asp-controller="account" asp-action="login">login</a></li>
+
+                                <li><a asp-controller="account" asp-action="register">register</a></li>
+                            }
+
+                            else
+                            {
+                                <li><a asp-controller="account" asp-action="logout">Logout</a></li>
+                                <li><a> Hi @User.Identity.Name</a> </li>
+
+                            }
+
+                @*             <li>
                                 <a href="#">
                                     <span class="lnr lnr-cart"></span>
                                 </a>
                             </li>
+
                             <li class="search">
                                 <form action="">
                                     <input type="text" name="search" placeholder="Search....">
@@ -173,7 +208,8 @@
                                         <span class="lnr lnr-magnifier"></span>
                                     </a>
                                 </form>
-                            </li>
+                            </li> *@
+
                         </ul><!-- / ul -->
                     </div><!-- /.navbar-collapse -->
                 </nav><!--/nav -->

@@ -15,9 +15,9 @@ namespace Project.DAL.Entities
 
         //Forkes
 
-        public int OwnerId { get; set; }
+        public int ManagerId { get; set; }
         //Navigation Prop
-        public  Manager Owner { get; set; }
+        public  Manager Manager { get; set; }
         public List<Floor>? Floors { get; set;}
         public List<Service>? Services { get; set;}
     }

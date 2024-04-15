@@ -5,9 +5,9 @@ using Project.DAL.Entities;
 
 namespace Project.BLL.Repositories
 {
-    public class Manager : GenericRepo<DAL.Entities.Manager>,IManagerRepo
+    public class ManagerRepo : GenericRepo<Manager>,IManagerRepo
     {
-        public Manager(ProjDbContext context) : base(context)
+        public ManagerRepo(ProjDbContext context) : base(context)
         {
         }
     }

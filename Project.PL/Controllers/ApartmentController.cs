@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Project.BLL.Interfaces;
 using Project.BLL.Repositories;
@@ -14,6 +15,7 @@ namespace Project.PL.Controllers
         }
 
         // GET: AparatmentController
+        [Authorize] // add middleware check cookie
         public IActionResult Index()
         {
             var apartmns = _unitOfWork.ApartmentRepo.GetAll();

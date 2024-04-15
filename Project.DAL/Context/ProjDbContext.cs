@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Project.DAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Project.DAL.Context
 {
-    public class ProjDbContext:DbContext
+    public class ProjDbContext:IdentityDbContext<ApplicationUser>
     {
 
         public ProjDbContext(DbContextOptions options) : base(options)

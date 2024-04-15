@@ -16,6 +16,6 @@ namespace Project.DAL.Entities
 
 
         //Navigation Prop
-        public List<Building> Buildings { get; set;}
+        public Building? Building { get; set;}
     }
 }

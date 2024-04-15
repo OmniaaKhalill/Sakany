@@ -1,50 +1,72 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project.BLL.Interfaces;
 using Project.DAL.Entities;
+using System.Diagnostics;
 
 namespace Project.PL.Controllers
 {
-    public class OwnerController : Controller
+    public class ManagerController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public OwnerController(IUnitOfWork unitOfWork)
+        public ManagerController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
         // GET: OwnerController
-        public ActionResult Index()
+        public IActionResult Index()
         {
 
-            var owner = _unitOfWork.OwnerRepo.GetAll();
-            return View(owner);
+            var manager = _unitOfWork.ManagerRepo.GetAll();
+            return View(manager);
         }
 
         // GET: OwnerController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(Manager manager)
         {
-            return View(new Manager());
+            var mngr = _unitOfWork.ManagerRepo.GetById(manager.Id);
+
+            return View(mngr);
         }
 
         // GET: OwnerController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
-            return View();
+            return View(new Manager());
         }
 
         // POST: OwnerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(Manager mngr)
         {
-            try
+
+
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    
+                    var dublicatedId = _unitOfWork.ManagerRepo.GetById(mngr.Id);
+                    if (dublicatedId != null)
+                    {
+                        ModelState.AddModelError("Manger", "Manger already exists.");
+                        return View(mngr);
+                    }
+                    _unitOfWork.ManagerRepo.Add(mngr);
+
+                    TempData["Message"] = "Manger Created Successfully!!";
+
+                    return RedirectToAction("Details",mngr);
+                }
+                catch (DbUpdateException ex)
+                {
+                    var innerException = ex.InnerException;
+                    Debug.WriteLine(innerException);
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(mngr);
         }
 
         // GET: OwnerController/Edit/5
