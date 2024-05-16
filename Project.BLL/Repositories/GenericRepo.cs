@@ -1,33 +1,43 @@
 ﻿using Project.BLL.Interfaces;
-using Project.DAL.Entities;
+using Project.DAL.Context;
+using Project.PL.Controllers;
 
 namespace Project.BLL.Repositories
 {
-    public class GenericRepo<T> : IGenericRepo<T>
+    public class GenericRepo<T> : IGenericRepo<T> where T : class
     {
+        private readonly ProjDbContext _context;
+
+        public GenericRepo(ProjDbContext context)
+        {
+            _context = context;
+        }
         public int Add(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Add(entity);
+            return _context.SaveChanges();
         }
 
         public int Delete(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Remove(entity);
+            return _context.SaveChanges();
         }
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().ToList();
         }
 
         public T GetById(int? id)
         {
-            throw new NotImplementedException();
+            return _context.Set<T>().Find(id);
         }
 
         public int Update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+            return _context.SaveChanges();
         }
     }
 }

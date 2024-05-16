@@ -9,5 +9,7 @@ namespace Project.BLL.Interfaces
 {
     public interface IApartmentRepo: IGenericRepo<Apartment>
     {
+        public IEnumerable<Apartment> Rented();
+        public IEnumerable<Apartment> Available();
     }
 }

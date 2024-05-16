@@ -2,7 +2,7 @@
 
 namespace Project.BLL.Interfaces
 {
-    public interface IOwnerRepo : IGenericRepo<Owner>
+    public interface IManagerRepo : IGenericRepo<Manager>
     {
     }
 }

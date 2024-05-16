@@ -10,7 +10,7 @@ namespace Project.DAL.Entities
     {
         public int  RenterId { get; set; }
         public int ServiceId { get; set; }
-        public string ServiceStatus { get; set; } = "Not Set";
+        public string ServiceStatus { get; set; } 
         //navigation prop
         public Renter Renter { get; set; }
         public Service Service { get; set; }

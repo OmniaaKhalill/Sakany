@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project.DAL.Entities
 {
-    public class Owner
+    public class Manager
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,6 +16,6 @@ namespace Project.DAL.Entities
 
 
         //Navigation Prop
-        public List<Building> Buildings { get; set;}
+        public Building? Building { get; set;}
     }
 }
